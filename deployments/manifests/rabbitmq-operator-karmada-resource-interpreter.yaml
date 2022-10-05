@@ -21,7 +21,7 @@ spec:
           operator: Exists
       containers:
         - name: rabbitmq-operator-karmada-resource-interpreter
-          image: swr.ap-southeast-1.myhuaweicloud.com/karmada/rabbitmq-operator-karmada-resource-interpreter:latest
+          image: ghcr.io/loicalbertin/rabbitmq-operator-karmada-resource-interpreter:main
           imagePullPolicy: IfNotPresent
           command:
             - /bin/rabbitmq-operator-karmada-resource-interpreter
@@ -32,6 +32,10 @@ spec:
             - --v=4
           ports:
             - containerPort: 8445
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
           volumeMounts:
             - name: kubeconfig
               subPath: kubeconfig
