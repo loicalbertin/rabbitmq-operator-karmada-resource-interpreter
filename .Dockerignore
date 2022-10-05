@@ -1,0 +1,5 @@
+.github/
+deployments/
+LICENSE
+README
+rabbitmq-operator-karmada-resource-interpreter
