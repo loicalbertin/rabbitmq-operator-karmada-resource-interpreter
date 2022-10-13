@@ -2,17 +2,17 @@
 apiVersion: config.karmada.io/v1alpha1
 kind: ResourceInterpreterWebhookConfiguration
 metadata:
-  name: examples
+  name: rabbitmq-riwc
 webhooks:
-  - name: workloads.example.com
+  - name: operator.rabbitmq.com
     rules:
       #  operations: [ "InterpretReplica","ReviseReplica","Retain","AggregateStatus", "InterpretHealth", "InterpretStatus" ]
-      - operations: [ "InterpretReplica","ReviseReplica" ]
+      - operations: [ "InterpretReplica","ReviseReplica","Retain", "AggregateStatus" ]
         apiGroups: [ "rabbitmq.com" ]
         apiVersions: [ "v1beta1" ]
         kinds: [ "RabbitmqCluster" ]
     clientConfig:
-      url: https://{{rabbitmq-operator-karmada-resource-interpreter-svc-address}}:443/interpreter-workload
-      caBundle: {{caBundle}}
+      url: https://172.18.0.8:443/interpreter-rabbitCluster
+      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURCVENDQWUyZ0F3SUJBZ0lVTUVLZHlDY3JEN2puU2hNVVFsTWtua25OTjlzd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0VqRVFNQTRHQTFVRUF3d0hhMkZ5YldGa1lUQWVGdzB5TWpFd01UTXhNekEwTlROYUZ3MHpNakV3TVRBeApNekEwTlROYU1CSXhFREFPQmdOVkJBTU1CMnRoY20xaFpHRXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCCkR3QXdnZ0VLQW9JQkFRQ3lhUVNSeDN2eEY0clFJb1VXSUlJV0gzaVdyWjRIYWd5a3llZ2tqVXl5MFowVXFBdE4KOENQZHJKaXdnUTFPOGZlbSszRVZ0YlUxNjNYN2VrK1ZIRy9XMHFtVHF1aTNJYVNmOGFadFAyTWhLY1JNVERobApGQ0lHeEtXUWgrQ0tyNms4TEhjZlFmb2dHR1RhMElEVHY1QVlGVWs2YytaemdNVUNEVUpZY1ZEdURhdmh2R3FaCnNBelZEd3hvc09LQXc3OXNzaXBJZmg2QlJDN1M5dmZPZHN1cldBZ1BvVWhacGwvNzNyb1J6Ny85K09PUlVmQTcKZ05qME1TSDJGRll5NGVaMVpFTWNkWHhCYVgxampveTBkU2RmMXRtaUFVbDBHcnBNVkNEeDRZekxqTUl1VUhNTAplcWhMUk0rS1RoS2xUcXZoVk9SdFBJYkIyUmNUVXdYZDBGSjFBZ01CQUFHalV6QlJNQjBHQTFVZERnUVdCQlF1CmVhbWgvMXc5VUtYekNlUnExOTNaRnVBWUNUQWZCZ05WSFNNRUdEQVdnQlF1ZWFtaC8xdzlVS1h6Q2VScTE5M1oKRnVBWUNUQVBCZ05WSFJNQkFmOEVCVEFEQVFIL01BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQUg3WDg4NERMZApiRHVDZ3VPSWdDWjJyUndEZmdFNy9sci9lTGM5Z2Z0a2RJWU9BU3pqY244UklRYlRYeVdSVUZZSDRBMTg2QndoCjgyWlc1ZUdxMXNCK0NKZ0s3SjhuYW9VZENYSTlicERVc21TUjgwK2w4dU5iN2d5Yk15U0w2alNOK3YxYWlwTWYKTExDTU5VckNEbkNaY3QwMzFLd3MxN21UakpQak1CSDN3bHJicHNWM1c4MkVFTkl6OEZScmtNaE9TMnprWC9kLwo5bjBjS1lKM1IreDkwSXR6RmpYSUpPTDhtSndyT2JpTmRhSUI4aVhmcVdXb1FTbkxrdUtjcnlzMGdkQXNxUDcrCmwrWldaaldEdDRQb1RGcGp6dVYwMWhmbDRqemVzcjh0VVYwa1BMTkxnOFpZYVI2WUh4MjRjcmYzM0w2dXRXRy8Kd0lRSytXNnZteG1ZCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
     interpreterContextVersions: [ "v1alpha1" ]
     timeoutSeconds: 3
